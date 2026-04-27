@@ -249,6 +249,7 @@ export default function RegistrationForm() {
   const renderField = (field: any) => {
     const commonClasses = "w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors";
   
+  const fieldValue = formData[field.label] || '';
     switch (field.type) {
       case 'textarea':
         return (
@@ -283,7 +284,7 @@ export default function RegistrationForm() {
             <input
               type="file"
               accept="image/jpeg, image/png, application/pdf"
-              required={field.required}
+              required={field.required && !formData[field.label]} // Perbaikan: required hanya jika belum ada file
               onChange={(e) => handleFileChange(e, field.label)}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
             />
@@ -297,9 +298,6 @@ export default function RegistrationForm() {
                     <span className="text-sm text-blue-700 font-medium">File Terpilih</span>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-white text-sm font-medium">Ubah File</span>
-                </div>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-full p-4 text-center">
@@ -315,7 +313,7 @@ export default function RegistrationForm() {
             type={field.type}
             name={field.label}
             required={field.required}
-            value={formData[field.label] || ''}
+            value={fieldValue}
             onChange={handleChange}
             className={commonClasses}
             placeholder={field.label}
