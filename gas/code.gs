@@ -1,5 +1,5 @@
 /**
- * Google Apps Script Backend for SPMB SD
+ * Google Apps Script Backend for SPMB SDN 1 RTL
  * Deploy as a Web App:
  * 1. Click "Deploy" -> "New deployment"
  * 2. Select type: "Web app"
@@ -11,7 +11,7 @@
 const SHEET_NAME = "Data Pendaftar";
 const ADMIN_SHEET_NAME = "Admin";
 const SETTINGS_SHEET_NAME = "Pengaturan";
-const FOLDER_NAME = "SPMB SD";
+const FOLDER_NAME = "RESPON SPMB 2026 SDN 1 RTL";
 
 const DEFAULT_FORM_FIELDS = [
   { id: "Nama Lengkap", label: "Nama Lengkap", type: "text", required: true },
