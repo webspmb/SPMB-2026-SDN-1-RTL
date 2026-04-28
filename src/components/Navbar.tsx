@@ -54,7 +54,7 @@ export default function Navbar() {
               </div>
             )}
             <span className="font-bold text-xl tracking-tight text-slate-900">
-              {settings?.namaSekolah || 'SD Negeri Kajulangko'}
+              {settings?.namaSekolah || 'SD Negeri 1 Ratolindo'}
             </span>
           </Link>
 
