@@ -214,20 +214,20 @@ export default function Home() {
       </section>
 
       {/* Alur SPMB */}
-      <section id="alur" className="py-24 bg-orange-300 text-slate-700 relative overflow-hidden">
+      <section id="alur" className="py-24 bg-yellow-300 text-slate-700 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2064&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Alur Pendaftaran SPMB</h2>
-            <p className="text-slate-300 max-w-2xl mx-auto text-lg">
+            <p className="text-slate-500 max-w-2xl mx-auto text-lg">
               Ikuti langkah-langkah mudah berikut untuk mendaftarkan putra/putri Anda.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
             {/* Connecting Line */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-orange-100 -translate-y-1/2 z-0"></div>
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-orange-400 -translate-y-1/2 z-0"></div>
             
             {[
               {
@@ -263,8 +263,8 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="relative z-10 flex flex-col items-center text-center"
               >
-                <div className="w-20 h-20 rounded-2xl bg-orange-800 border border-orange-700 flex items-center justify-center mb-6 shadow-xl relative group hover:bg-yellow-600 transition-colors duration-300">
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-sm border-4 border-slate-900">
+                <div className="w-20 h-20 rounded-2xl bg-orange-400 border border-orange-300 flex items-center justify-center mb-6 shadow-xl relative group hover:bg-yellow-600 transition-colors duration-300">
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-200 text-white flex items-center justify-center font-bold text-sm border-4 border-orange-400">
                     {item.step}
                   </div>
                   <div className="text-slate-300 group-hover:text-white transition-colors">
