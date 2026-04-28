@@ -34,7 +34,7 @@ export default function Home() {
           className={`absolute inset-0 bg-cover bg-center ${settings?.gambarHeaderBeranda ? 'opacity-30' : 'opacity-5'}`}
           style={{ backgroundImage: `url('${settings?.gambarHeaderBeranda || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop'}')` }}
         ></div>
-        <div className={`absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white/80 to-green-50/90 ${settings?.gambarHeaderBeranda ? '' : 'backdrop-blur-sm'}`}></div>
+        <div className={`absolute inset-0 bg-gradient-to-br from-orange-50/90 via-white/80 to-yellow-50/90 ${settings?.gambarHeaderBeranda ? '' : 'backdrop-blur-sm'}`}></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
@@ -42,11 +42,11 @@ export default function Home() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm mb-8 shadow-sm border ${isClosed ? 'bg-red-100 text-red-700 border-red-200' : 'bg-blue-100 text-blue-700 border-blue-200'}`}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm mb-8 shadow-sm border ${isClosed ? 'bg-red-100 text-red-700 border-red-200' : 'bg-orange-100 text-orange-700 border-orange-200'}`}
             >
               <span className="relative flex h-3 w-3">
-                {!isClosed && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>}
-                <span className={`relative inline-flex rounded-full h-3 w-3 ${isClosed ? 'bg-red-500' : 'bg-blue-500'}`}></span>
+                {!isClosed && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>}
+                <span className={`relative inline-flex rounded-full h-3 w-3 ${isClosed ? 'bg-red-500' : 'bg-orange-500'}`}></span>
               </span>
               {isClosed ? `Pendaftaran SPMB ${new Date().getFullYear()} Telah Ditutup` : `Pendaftaran SPMB ${new Date().getFullYear()} Telah Dibuka`}
             </motion.div>
@@ -57,9 +57,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6"
             >
-              Membangun Generasi <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">
-                Unggul & Berkarakter
+              Wujudkan Masa Depan <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-400">
+                Anak Bangsa Yang Gemilang
               </span>
             </motion.h1>
             
@@ -69,7 +69,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed"
             >
-              Bergabunglah bersama {settings?.namaSekolah || 'SD Negeri Kajulangko'}. Kami berkomitmen memberikan pendidikan dasar terbaik dengan fasilitas modern dan tenaga pendidik profesional.
+              Bergabunglah bersama {settings?.namaSekolah || 'SD Negeri 1 Ratolindo'}. siap menyambut putra/putri Bapak/Ibu untuk bergabung dan tumbuh bersama dalam lingkungan pendidikan yang penuh semangat, sekolah kami berkomitmen memberikan yang terbaik untuk memastikan setiap murid tumbuh menjadi individu yg berprestasi, berkarakter, dan berakhlak mulia.
             </motion.p>
             
             <motion.div
@@ -88,7 +88,7 @@ export default function Home() {
               ) : (
                 <Link
                   to="/daftar"
-                  className="inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="inline-flex justify-center items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >
                   Daftar Sekarang <ChevronRight size={20} />
                 </Link>
@@ -116,19 +116,19 @@ export default function Home() {
           >
             {[
               {
-                icon: <BookOpen className="text-blue-500" size={32} />,
+                icon: <BookOpen className="text-orange-500" size={32} />,
                 title: "Kurikulum Modern",
                 desc: "Menerapkan kurikulum merdeka belajar yang adaptif dengan perkembangan zaman dan teknologi."
               },
               {
-                icon: <Users className="text-green-500" size={32} />,
+                icon: <Users className="text-yellow-500" size={32} />,
                 title: "Guru Profesional",
                 desc: "Dididik oleh tenaga pengajar tersertifikasi, berpengalaman, dan berdedikasi tinggi pada pendidikan."
               },
               {
                 icon: <Trophy className="text-amber-500" size={32} />,
                 title: "Fasilitas Lengkap",
-                desc: "Ruang kelas nyaman, tempat ibadah dan fasilitas olahraga yang memadai."
+                desc: "Ruang kelas nyaman, Lab Komputer, Auditorium, Perpustakaan, tempat ibadah dan fasilitas olahraga yang memadai."
               }
             ].map((feature, idx) => (
               <motion.div
@@ -186,7 +186,7 @@ export default function Home() {
               className="bg-slate-50 rounded-3xl p-8 md:p-10 border border-slate-100"
             >
               <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                <span className="bg-blue-100 text-blue-600 p-2 rounded-lg"><Trophy size={24} /></span>
+                <span className="bg-orange-100 text-orange-600 p-2 rounded-lg"><Trophy size={24} /></span>
                 Visi & Misi
               </h3>
               
@@ -202,7 +202,7 @@ export default function Home() {
                 <ul className="space-y-3">
                   {(settings?.misiSekolah ? settings.misiSekolah.split('\n') : []).map((misi, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-slate-600">
-                      <CheckCircle2 className="text-green-500 shrink-0 mt-0.5" size={20} />
+                      <CheckCircle2 className="text-yellow-500 shrink-0 mt-0.5" size={20} />
                       <span>{misi.replace(/^\d+\.\s*/, '')}</span>
                     </li>
                   ))}
@@ -263,8 +263,8 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="relative z-10 flex flex-col items-center text-center"
               >
-                <div className="w-20 h-20 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-6 shadow-xl relative group hover:bg-blue-600 transition-colors duration-300">
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm border-4 border-slate-900">
+                <div className="w-20 h-20 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-6 shadow-xl relative group hover:bg-orange-600 transition-colors duration-300">
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-sm border-4 border-slate-900">
                     {item.step}
                   </div>
                   <div className="text-slate-300 group-hover:text-white transition-colors">
