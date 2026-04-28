@@ -52,7 +52,7 @@ export default function AdminLogin() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100"
         >
-          <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-8 py-8 text-white text-center">
+          <div className="bg-gradient-to-r from-yellow-800 to-yellow-900 px-8 py-8 text-white text-center">
             <div className="mx-auto w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mb-4">
               <Lock className="text-blue-400" size={32} />
             </div>
