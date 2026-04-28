@@ -14,7 +14,7 @@ export default function Footer() {
               {settings?.logoSekolah ? (
                 <img src={settings.logoSekolah} alt="Logo Sekolah" className="h-10 w-auto object-contain bg-white p-1 rounded" referrerPolicy="no-referrer" />
               ) : (
-                <div className="bg-blue-600 p-2 rounded-lg text-white">
+                <div className="bg-emerald-600 p-2 rounded-lg text-white">
                   <GraduationCap size={24} />
                 </div>
               )}
@@ -30,9 +30,9 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Tautan Cepat</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Beranda</Link></li>
-              <li><Link to="/daftar" className="hover:text-blue-400 transition-colors">Pendaftaran SPMB</Link></li>
-              <li><Link to="/admin" className="hover:text-blue-400 transition-colors">Login Admin</Link></li>
+              <li><Link to="/" className="hover:text-yellow-400 transition-colors">Beranda</Link></li>
+              <li><Link to="/daftar" className="hover:text-yellow-400 transition-colors">Pendaftaran SPMB</Link></li>
+              <li><Link to="/admin" className="hover:text-yellow-400 transition-colors">Login Admin</Link></li>
             </ul>
           </div>
           
@@ -40,22 +40,22 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Hubungi Kami</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-blue-500 shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-amber-500 shrink-0 mt-0.5" />
                 <span>{settings?.alamat || 'Jl. R. A. Kartini No. 34, Kel. Uentanaga Bawah, Kec. Ratolindo, Kab. Tojo Una-Una, Prov. Sul Teng, 94683'}</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-blue-500 shrink-0" />
+                <Phone size={18} className="text-amber-500 shrink-0" />
                 <span>{settings?.telepon || '+62 822-9673-1577'}</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={18} className="text-blue-500 shrink-0" />
+                <Mail size={18} className="text-amber-500 shrink-0" />
                 <span>{settings?.email || 'sdnegeri1ratolindo@gmail.com'}</span>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-500 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-12 pt-8 border-t border-emerald-900/50 text-center text-sm text-slate-500 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} {settings?.namaSekolah || 'SD Negeri 1 Ratolindo'}. Hak Cipta Dilindungi.</p>
           <p className="mt-2 md:mt-0">SPMB Online Terintegrasi</p>
         </div>
