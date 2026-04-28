@@ -37,7 +37,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-slate-200 shadow-sm">
+    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/90 border-b border-emerald-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link to="/" className="flex items-center gap-2">
@@ -49,11 +49,11 @@ export default function Navbar() {
                 referrerPolicy="no-referrer" 
               />
             ) : (
-              <div className="bg-blue-600 p-2 rounded-lg text-white">
+              <div className="bg-emerald-600 p-2 rounded-lg text-white">
                 <GraduationCap size={24} />
               </div>
             )}
-            <span className="font-bold text-xl tracking-tight text-slate-900">
+            <span className="font-bold text-xl tracking-tight text-emerald-900">
               {settings?.namaSekolah || 'SD Negeri 1 Ratolindo'}
             </span>
           </Link>
@@ -65,8 +65,10 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-blue-600",
-                  location.pathname === link.path ? "text-blue-600" : "text-slate-600"
+                  "text-sm font-medium transition-colors",
+                  location.pathname === link.path 
+                  ? "text-emerald-700 font-bold" 
+                  : "text-emerald-800/80 hover:text-amber-600"
                 )}
               >
                 {link.name}
@@ -74,7 +76,7 @@ export default function Navbar() {
             ))}
             <Link
               to="/daftar"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg"
+              className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg"
             >
               Daftar Sekarang
             </Link>
@@ -110,8 +112,8 @@ export default function Navbar() {
                   className={cn(
                     "block px-3 py-2 rounded-md text-base font-medium",
                     location.pathname === link.path
-                      ? "bg-blue-50 text-blue-600"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                      ? "bg-emerald-50 text-emerald-700 font-bold"
+                      : "text-emerald-800 hover:bg-emerald-50 hover:text-amber-600"
                   )}
                 >
                   {link.name}
