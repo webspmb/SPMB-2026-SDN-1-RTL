@@ -103,7 +103,17 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (settings) {
-      setLocalSettings(settings);
+      // Pastikan data panduan di-parse jika masih berbentuk string
+      const sanitized = {
+        ...settings,
+        panduanDokumen: typeof settings.panduanDokumen === 'string' 
+          ? JSON.parse(settings.panduanDokumen) 
+          : (settings.panduanDokumen || []),
+        panduanAlur: typeof settings.panduanAlur === 'string' 
+          ? JSON.parse(settings.panduanAlur) 
+          : (settings.panduanAlur || [])
+      };
+      setLocalSettings(sanitized);
     }
   }, [settings]);
 
@@ -905,7 +915,8 @@ export default function AdminDashboard() {
                           <h4 className="text-md font-semibold">Dokumen yang Harus Disiapkan</h4>
                           <button
                             onClick={() => {
-                              const newDocs = [...(localSettings.panduanDokumen || [])];
+                              const currentDocs = Array.isArray(localSettings.panduanDokumen) ? localSettings.panduanDokumen : [];
+                              const newDocs = [...currentDocs];
                               newDocs.push({ id: Date.now().toString(), icon: 'FileText', title: 'Dokumen Baru', description: 'Deskripsi dokumen' });
                               setLocalSettings({...localSettings, panduanDokumen: newDocs});
                             }}
@@ -915,7 +926,7 @@ export default function AdminDashboard() {
                           </button>
                         </div>
                         <div className="space-y-4">
-                          {(localSettings.panduanDokumen || []).map((doc, index) => (
+                          {(Array.isArray(localSettings?.panduanDokumen) ? localSettings.panduanDokumen : []).map((doc, index) => (
                             <div key={doc.id} className={cn("p-4 rounded-lg border grid grid-cols-1 md:grid-cols-12 gap-4 items-start", isDarkMode ? "border-slate-700 bg-slate-900/50" : "border-slate-200 bg-slate-50")}>
                               <div className="md:col-span-2">
                                 <label className="block text-xs font-medium mb-1 opacity-70">Ikon</label>
@@ -992,7 +1003,7 @@ export default function AdminDashboard() {
                           </button>
                         </div>
                         <div className="space-y-3">
-                          {(localSettings.panduanAlur || []).map((step, index) => (
+                          {(Array.isArray(localSettings?.panduanAlur) ? localSettings.panduanAlur : []).map((step, index) => (
                             <div key={index} className="flex gap-3 items-start">
                               <div className="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 mt-1 dark:bg-slate-700 dark:text-slate-300">
                                 {index + 1}
