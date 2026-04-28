@@ -47,14 +47,14 @@ export default function Guide() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-12">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
         >
-          <div className="bg-orange-600 p-8 text-white">
+          <div className="bg-orange-400 p-8 text-white">
             <h1 className="text-3xl font-bold mb-2">{judul}</h1>
             <p className="text-blue-100">{deskripsi}</p>
           </div>
