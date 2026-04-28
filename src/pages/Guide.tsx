@@ -113,7 +113,7 @@ export default function Guide() {
             <div className="flex justify-center pt-6 border-t border-slate-100">
               <Link
                 to="/daftar"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+                className="inline-flex items-center gap-2 bg-Yellow-600 hover:bg-yellow-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 Mulai Pendaftaran <ArrowRight size={20} />
               </Link>
