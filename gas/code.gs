@@ -28,11 +28,11 @@ const DEFAULT_FORM_FIELDS = [
 ];
 
 const DEFAULT_SETTINGS = {
-  namaSekolah: "SD Negeri Kajulangko",
-  alamat: "Jl. Pendidikan, Desa Kajulangko, Kec. Ampana Tete",
-  telepon: "+62 822-9294-5790",
-  email: "sdnegerikajulangko@gmail.com",
-  deskripsi: "Mencetak generasi penerus bangsa yang Beriman, Kompeten, Mandiri, Berdaya Saing Global, Adaptif dan Responsif Terhadap Perkembangan Zaman",
+  namaSekolah: "SD Negeri 1 Ratolindo",
+  alamat: "Jl. R. A. Kartini No. 34, Kel. Uentanaga Bawah, Kec. Ratolindo, Kab. Tojo Una-Una, Prov. Sul Teng, 94683",
+  telepon: "+62 822-9673-1577",
+  email: "sdnegeri1ratolindo@gmail.com",
+  deskripsi: "Prestasi bukan sekedar tujuan, melainkan sebuah tradisi yang terus kami lestarikan",
   statusPendaftaran: "Buka",
   formFields: JSON.stringify(DEFAULT_FORM_FIELDS)
 };
@@ -56,7 +56,7 @@ function setup() {
   if (!adminSheet) {
     adminSheet = ss.insertSheet(ADMIN_SHEET_NAME);
     adminSheet.appendRow(["Username", "Password"]);
-    adminSheet.appendRow(["admin", "admin123"]); // Default credentials
+    adminSheet.appendRow(["admin", "adminsdn1rtl*"]); // Default credentials
     adminSheet.getRange(1, 1, 1, 2).setFontWeight("bold").setBackground("#e0e0e0");
   }
 
