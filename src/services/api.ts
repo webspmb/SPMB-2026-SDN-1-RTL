@@ -184,9 +184,19 @@ export const getSettings = async (): Promise<AppSettings> => {
     const response = await fetch(`${GAS_WEB_APP_URL}?action=getSettings&t=${Date.now()}`);
     const result = await response.json();
     if (result.status === "success") {
+      const data = result.data;
+      const safeParse = (val: any) => {
+        if (typeof val === 'string') {
+          try { return JSON.parse(val); } catch (e) { return []; }
+        }
+        return Array.isArray(val) ? val : [];
+      };
+      
       return {
-        ...result.data,
-        formFields: typeof result.data.formFields === 'string' ? JSON.parse(result.data.formFields) : result.data.formFields
+        ...data,
+        formFields: safeParse(data.formFields),
+        panduanDokumen: safeParse(data.panduanDokumen),
+        panduanAlur: safeParse(data.panduanAlur)
       };
     }
     throw new Error(result.message);
@@ -205,6 +215,8 @@ export const updateSettings = async (settings: Partial<AppSettings>) => {
   try {
     const response = await fetch(GAS_WEB_APP_URL, {
       method: "POST",
+      mode: "cors",
+      redirect: "follow",
       body: JSON.stringify({
         action: "updateSettings",
         settings: settings
