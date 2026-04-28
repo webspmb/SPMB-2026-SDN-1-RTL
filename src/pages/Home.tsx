@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* Alur SPMB */}
-      <section id="alur" className="py-24 bg-orange-300 text-white relative overflow-hidden">
+      <section id="alur" className="py-24 bg-slate-600 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2064&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
