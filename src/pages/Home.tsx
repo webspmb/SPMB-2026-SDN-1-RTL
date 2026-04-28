@@ -272,7 +272,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
