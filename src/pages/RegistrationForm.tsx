@@ -333,7 +333,7 @@ export default function RegistrationForm() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-10 text-white text-center">
+          <div className="bg-gradient-to-r from-orange-300 to-orange-400 px-8 py-10 text-emerald text-center">
             <h2 className="text-3xl font-bold mb-2">Formulir Pendaftaran SPMB</h2>
             <p className="text-blue-100">Lengkapi data diri calon murid dengan benar dan valid.</p>
           </div>
