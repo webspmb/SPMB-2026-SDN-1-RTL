@@ -52,33 +52,29 @@ const calculateAge = (dateString: string) => {
   const birthDate = new Date(dateString);
   if (isNaN(birthDate.getTime())) return '-';
   
-// Perbaikan: Menetapkan tanggal target ke 01 Juli tahun berjalan secara otomatis
-const currentYear = new Date().getFullYear();
-const targetDate = new Date(currentYear, 6, 1); // 6 = Juli (indeks dimulai dari 0)
+  const currentYear = new Date().getFullYear();
+  // Target perhitungan: 1 Juli tahun berjalan (standar masuk sekolah)
+  const targetDate = new Date(currentYear, 6, 1); 
 
-let years = targetDate.getFullYear() - birthDate.getFullYear();
-let months = targetDate.getMonth() - birthDate.getMonth();
-let days = targetDate.getDate() - birthDate.getDate();
+  let years = targetDate.getFullYear() - birthDate.getFullYear();
+  let months = targetDate.getMonth() - birthDate.getMonth();
+  let days = targetDate.getDate() - birthDate.getDate();
 
-// Logika jika hari belum mencapai tanggal target
-if (days < 0) {
-  months--;
-  // Mengambil jumlah hari di bulan sebelumnya dari targetDate
-  const prevMonth = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0);
-  days += prevMonth.getDate();
-}
+  if (days < 0) {
+    months--;
+    const lastDayPrevMonth = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0).getDate();
+    days += lastDayPrevMonth;
+  }
 
-// Logika jika bulan belum mencapai bulan target
-if (months < 0) {
-  years--;
-  months += 12;
-}
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
 
-// Opsional: Jika hasil tahun negatif (karena input lahir > targetDate)
-if (years < 0) return 'Belum Lahir';
-
-return `${years} Tahun ${months} Bulan ${days} Hari`;
+  if (years < 0) return 'Belum Lahir';
+  return `${years} Tahun ${months} Bulan ${days} Hari`;
 };
+
 export default function AdminDashboard() {
   const { settings, refreshSettings } = useSettings();
   const [data, setData] = useState<AdminData[]>([]);
@@ -223,34 +219,35 @@ export default function AdminDashboard() {
   };
 
   const exportToExcel = () => {
-    const exportData = data.map(item => {
-      const formattedItem: any = { ...item };
-      
-      const tglLahir = getFieldValue(item, 'Tanggal Lahir');
-      if (tglLahir) {
-        formattedItem['Tanggal Lahir'] = formatDate(tglLahir);
-        formattedItem['Usia'] = calculateAge(tglLahir);
-      }
+  const exportData = data.map(item => {
+    const formattedItem: any = { ...item };
+    
+    const tglLahir = getFieldValue(item, 'Tanggal Lahir');
+    if (tglLahir) {
+      formattedItem['Tanggal Lahir'] = formatDate(tglLahir);
+      formattedItem['Usia'] = calculateAge(tglLahir);
+    }
       
       if (item['Koordinat Lokasi']) {
-        formattedItem['Link Maps'] = `https://www.google.com/maps/search/?api=1&query=${item['Koordinat Lokasi']}`;
+      const coords = item['Koordinat Lokasi'].replace(/\s/g, '');
+      formattedItem['Link Maps'] = `https://www.google.com/maps?q=${coords}`;
+    }
+    
+    Object.keys(formattedItem).forEach(key => {
+      if (typeof formattedItem[key] === 'string' && formattedItem[key].startsWith('data:')) {
+        formattedItem[key] = 'File Terlampir (Lihat di Dashboard)';
       }
-      
-      Object.keys(formattedItem).forEach(key => {
-        if (typeof formattedItem[key] === 'string' && formattedItem[key].startsWith('data:')) {
-          formattedItem[key] = 'File Terlampir (Lihat di Dashboard)';
-        }
-      });
-      
-      return formattedItem;
     });
     
-    const ws = XLSX.utils.json_to_sheet(exportData);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Data Pendaftar");
-    XLSX.writeFile(wb, `Data_SPMB_${new Date().toISOString().split('T')[0]}.xlsx`);
-  };
-
+    return formattedItem;
+  });
+  
+  const ws = XLSX.utils.json_to_sheet(exportData);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Data Pendaftar");
+  XLSX.writeFile(wb, `Data_SPMB_${new Date().toISOString().split('T')[0]}.xlsx`);
+};
+  
   const printCard = (student: AdminData) => {
     const doc = new jsPDF();
     
@@ -1340,20 +1337,21 @@ export default function AdminDashboard() {
                         )})}
                         
                         {selectedStudent['Koordinat Lokasi'] && (
-                          <div className="grid grid-cols-3 gap-4 mt-2">
-                            <dt className="text-slate-500 dark:text-slate-400">Koordinat Lokasi</dt>
-                            <dd className="col-span-2 font-medium">
-                              <a 
-                                href={`https://www.google.com/maps/search/?api=1&query=${selectedStudent['Koordinat Lokasi']}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline flex items-center gap-1"
-                              >
-                                {selectedStudent['Koordinat Lokasi']}
-                              </a>
-                            </dd>
-                          </div>
-                        )}
+  <div className="grid grid-cols-3 gap-4 mt-2">
+    <dt className="text-slate-500 dark:text-slate-400">Koordinat Lokasi</dt>
+    <dd className="col-span-2 font-medium">
+      <a 
+        href={`https://www.google.com/maps?q=${selectedStudent['Koordinat Lokasi'].replace(/\s/g, '')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:underline flex items-center gap-1"
+      >
+        <span className="truncate">{selectedStudent['Koordinat Lokasi']}</span>
+        <Eye size={14} />
+      </a>
+    </dd>
+  </div>
+)}
                         
                         {selectedStudent['Jarak ke Sekolah (km)'] && (
                           <div className="grid grid-cols-3 gap-4">
