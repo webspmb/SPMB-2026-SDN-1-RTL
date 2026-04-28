@@ -444,7 +444,7 @@ export default function RegistrationForm() {
   		className={`w-full px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md flex items-center justify-center 
     		${(distance !== null && distance > 5) 
       		  ? 'bg-slate-300 text-slate-500 cursor-not-allowed shadow-none' 
-      		  : 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg'
+      		  : 'bg-orange-300 hover:bg-orange-400 text-white hover:shadow-lg'
     		} disabled:opacity-70`}
 	     >
   	       {isSubmitting ? (
