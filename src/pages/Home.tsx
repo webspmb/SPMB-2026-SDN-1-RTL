@@ -263,11 +263,11 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="relative z-10 flex flex-col items-center text-center"
               >
-                <div className="w-20 h-20 rounded-2xl bg-orange-400 border border-orange-300 flex items-center justify-center mb-6 shadow-xl relative group hover:bg-yellow-600 transition-colors duration-300">
+                <div className="w-20 h-20 rounded-2xl bg-orange-400 border border-orange-300 flex items-center justify-center mb-6 shadow-xl relative group hover:bg-yellow-300 transition-colors duration-300">
                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-200 text-white flex items-center justify-center font-bold text-sm border-4 border-orange-400">
                     {item.step}
                   </div>
-                  <div className="text-slate-300 group-hover:text-white transition-colors">
+                  <div className="text-slate-600 group-hover:text-white transition-colors">
                     {item.icon}
                   </div>
                 </div>
