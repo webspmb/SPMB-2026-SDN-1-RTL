@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               {settings?.logoSekolah ? (
-                <img src={settings.logoSekolah} alt="Logo Sekolah" className="h-12 w-auto object-contain" referrerPolicy="no-referrer" />
+                <img src={settings.logoSekolah} alt="Logo Sekolah" className="h-12 w-auto object-contain brightness-0 invert" referrerPolicy="no-referrer" />
               ) : (
                 <div className="bg-emerald-600 p-2 rounded-lg text-white">
                   <GraduationCap size={24} />
