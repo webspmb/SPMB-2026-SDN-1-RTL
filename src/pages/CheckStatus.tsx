@@ -299,7 +299,7 @@ export default function CheckStatus() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-colors disabled:opacity-70 flex items-center justify-center"
+                  className="bg-orange-300 hover:bg-orange-400 text-white px-6 py-3 rounded-xl font-medium transition-colors disabled:opacity-70 flex items-center justify-center"
                 >
                   {isLoading ? <Loader2 className="animate-spin" size={20} /> : <Search size={20} />}
                 </button>
