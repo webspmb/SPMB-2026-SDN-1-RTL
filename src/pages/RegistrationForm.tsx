@@ -69,9 +69,9 @@ export default function RegistrationForm() {
         setDistance(dist);
 
         // Logika penentuan keterangan jarak
-        const jarakTerlaluJauh = dist > 5;
+        const jarakTerlaluJauh = dist > 60;
         const keteranganJarak = jarakTerlaluJauh 
-          ? "Jarak lebih dari 5 km (Melebihi batas zonasi)" 
+          ? "Jarak lebih dari 60 km (Melebihi batas zonasi)" 
           : "Dalam jangkauan zonasi";
 
         setFormData(prev => ({ 
@@ -80,9 +80,9 @@ export default function RegistrationForm() {
           'Keterangan Jarak': keteranganJarak // Field baru untuk keterangan
         }));
 
-        // Opsional: Tampilkan alert atau peringatan visual jika > 5km
+        // Opsional: Tampilkan alert atau peringatan visual jika > 60km
         if (jarakTerlaluJauh) {
-          console.warn("Peringatan: Lokasi pendaftar di luar radius 5 km.");
+          console.warn("Peringatan: Lokasi pendaftar di luar radius 60 km.");
         }
       }
     }
@@ -369,18 +369,18 @@ export default function RegistrationForm() {
                     
                     {distance !== null && (
                       <div className={`mt-3 p-3 border rounded-lg flex items-center justify-between ${
-    distance > 5 ? 'bg-red-50 border-red-200' : 'bg-blue-50 border-blue-100'
+    distance > 60 ? 'bg-red-50 border-red-200' : 'bg-blue-50 border-blue-100'
   }`}>
-			<span className={`text-sm ${distance > 5 ? 'text-red-700' : 'text-slate-700'}`}>
+			<span className={`text-sm ${distance > 60 ? 'text-red-700' : 'text-slate-700'}`}>
       			  Jarak ke Sekolah:
     			</span>
     			<div className="text-right">
-      			  <span className={`font-bold block ${distance > 5 ? 'text-red-700' : 'text-blue-700'}`}>
+      			  <span className={`font-bold block ${distance > 60 ? 'text-red-700' : 'text-blue-700'}`}>
         		    {distance.toFixed(2)} km
       			</span>
-      			{distance > 5 && (
+      			{distance > 60 && (
         		<span className="text-[10px] text-red-600 font-medium italic">
-          		  *Maaf, lokasi Anda di luar radius zonasi (5 km).
+          		  *Maaf, lokasi Anda di luar radius zonasi (60 km).
 			</span>
                       )}
                     </div>
@@ -439,10 +439,10 @@ export default function RegistrationForm() {
             <div className="pt-4 border-t border-slate-100">
               <button
                 type="submit"
-		// LOGIKA UTAMA: Disable jika sedang proses, atau jarak > 5km
-  		disabled={isSubmitting || (distance !== null && distance > 5)}
+		// LOGIKA UTAMA: Disable jika sedang proses, atau jarak > 60km
+  		disabled={isSubmitting || (distance !== null && distance > 60)}
   		className={`w-full px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md flex items-center justify-center 
-    		${(distance !== null && distance > 5) 
+    		${(distance !== null && distance > 60) 
       		  ? 'bg-slate-300 text-slate-500 cursor-not-allowed shadow-none' 
       		  : 'bg-orange-300 hover:bg-orange-400 text-white hover:shadow-lg'
     		} disabled:opacity-70`}
@@ -452,8 +452,8 @@ export default function RegistrationForm() {
       		   <Loader2 className="animate-spin mr-2" size={24} />
       		   Memproses...
     		 </>
-  	      ) : (distance !== null && distance > 5) ? (
-    		'Jarak Melebihi Batas (Maks 5km)'
+  	      ) : (distance !== null && distance > 60) ? (
+    		'Jarak Melebihi Batas (Maks 60km)'
   	      ) : (
     		'Kirim Pendaftaran'
   	      )}
