@@ -207,10 +207,13 @@ export const updateSettings = async (settings: Partial<AppSettings>) => {
       method: "POST",
       body: JSON.stringify({
         action: "updateSettings",
-        settings
+        settings: settings
       }),
       headers: { "Content-Type": "text/plain;charset=utf-8" },
     });
+    
+    if (!response.ok) throw new Error("Network response was not ok");
+    
     return await response.json();
   } catch (error) {
     console.error("Error updating settings:", error);
